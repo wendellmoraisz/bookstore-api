@@ -16,5 +16,8 @@ public class Book {
     private Long id;
 
     private String title;
-
+    private String author;
+    private String publishingCompany;
+    private String bookImgSrc;
+    private Integer publicationYear;
 }
