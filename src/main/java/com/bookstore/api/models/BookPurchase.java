@@ -4,25 +4,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
-import java.util.List;
 import lombok.Data;
 
 @Data
 @Entity
-public class Book {
-    
+public class BookPurchase {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    private Integer quantity;
+    private Double unityValue;
 
-    private String title;
-    private String author;
-    private String publishingCompany;
-    private String bookImgSrc;
-    private Integer publicationYear;
-
-    @OneToMany
-    private List<BookPurchase> purchases;
+    @ManyToOne
+    private Book book;
 }
