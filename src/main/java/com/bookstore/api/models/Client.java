@@ -17,6 +17,6 @@ public class Client {
 
     String name;
     String cpf;
-    Integer phoneNumber;
+    Number phoneNumber;
     String address;
 }

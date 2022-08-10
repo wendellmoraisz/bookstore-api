@@ -20,5 +20,5 @@ public class Sale {
     Client client;
     
     Integer itemsQuantity;
-    Double salePrice;
+    Double price;
 }
