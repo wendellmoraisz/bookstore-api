@@ -4,7 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+
+import java.util.List;
 
 import lombok.Data;
 
@@ -21,4 +24,7 @@ public class Sale {
     
     Integer itemsQuantity;
     Double price;
+
+    @ManyToMany
+    List<Book> books;
 }
