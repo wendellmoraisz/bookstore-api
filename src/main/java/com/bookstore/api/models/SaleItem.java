@@ -1,30 +1,31 @@
 package com.bookstore.api.models;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 
-import java.util.List;
-
-import lombok.Data;
-
-@Data
 @Entity
-public class Sale {
+public class SaleItem extends Book {
+
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    private List<Sale> sales;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    Client client;
+    private Integer quantity;
 
-    Double price;
+    public Integer getQuantity() {
+        return quantity;
+    }
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    List<SaleItem> books;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
 }

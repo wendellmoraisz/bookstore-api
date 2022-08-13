@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bookstore.api.models.Book;
+import com.bookstore.api.models.BookModel;
 import com.bookstore.api.repository.BookRepository;
 
 @RestController
@@ -20,15 +20,15 @@ public class BookController {
 
     @Autowired
     private BookRepository bookRepository;
-    
+
     @GetMapping
-    public List<Book> getBooks() {
+    public List<BookModel> getBooks() {
         return bookRepository.findAll();
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Book createBook(@RequestBody Book book){
+    public BookModel createBook(@RequestBody BookModel book) {
         return bookRepository.save(book);
     }
 
