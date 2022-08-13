@@ -29,7 +29,7 @@ public class ClientController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Client postMethodName(@RequestBody Client client) {        
+    public Client registerClient(@RequestBody Client client) {        
         return clientRepository.save(client);
     }
     
