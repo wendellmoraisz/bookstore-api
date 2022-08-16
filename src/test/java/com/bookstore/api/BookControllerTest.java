@@ -6,12 +6,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.bookstore.api.controllers.BookController;
-import com.bookstore.api.models.Book;
 import com.bookstore.api.models.BookModel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;;
@@ -26,12 +24,14 @@ public class BookControllerTest {
 
     @Test
     public void getBooksTest() {
-        assertEquals(new ArrayList<BookModel>(), bookController.getBooks());
+        BookModel registeredBook = bookController.createBook(new BookModel());
+        assertTrue(bookController.getBooks().contains(registeredBook));
     }
 
     @Test
     public void createBookTest() {
-        Book book = new BookModel();
-        assertEquals(book, bookController.createBook(new BookModel()));
+        BookModel bookModel = new BookModel();
+        BookModel bookResponse = bookController.createBook(new BookModel());
+        assertEquals(bookModel.getClass().getSimpleName(), bookResponse.getClass().getSimpleName());
     }
 }
