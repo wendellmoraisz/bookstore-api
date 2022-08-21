@@ -9,8 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import lombok.Data;
+
+@Data
 @Entity
-public class SaleItem extends Book {
+public class SaleItem {
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     private List<Sale> sales;
@@ -19,6 +22,11 @@ public class SaleItem extends Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String title;
+    private String author;
+    private String publishingCompany;
+    private String bookImgSrc;
+    private Integer publicationYear;
     private Integer quantity;
 
     public Integer getQuantity() {
